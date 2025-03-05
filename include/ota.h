@@ -10,8 +10,11 @@
 class Ota
 {
 public:
+    Ota() = default;
     explicit Ota(std::string serverUri);
     bool update(bool restart = true);
+    bool update(std::string from, bool restart = true);
+    inline void setServerUri(const std::string from) { m_serverUri = from; };
 
 private:
     static esp_err_t http_event_handler(esp_http_client_event_t *evt);

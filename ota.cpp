@@ -13,6 +13,12 @@ Ota::Ota(std::string serverUri)
     m_serverUri = std::move(serverUri);
 }
 
+bool Ota::update(std::string from, bool restart)
+{
+    setServerUri(std::move(from));
+    update(restart);
+}
+
 bool Ota::update(bool restart)
 {
     esp_http_client_config_t config;
