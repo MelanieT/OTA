@@ -13,13 +13,19 @@ Ota::Ota(std::string serverUri)
     m_serverUri = std::move(serverUri);
 }
 
-bool Ota::update(std::string from, bool restart)
+bool Ota::update(std::string from)
 {
-    setServerUri(std::move(from));
-    update(restart);
+    m_serverUri = std::move(from);
+    update();
 }
 
-bool Ota::update(bool restart)
+bool Ota::update(const char *from)
+{
+    m_serverUri = from;
+    update();
+}
+
+bool Ota::update()
 {
     esp_http_client_config_t config;
     memset(&config, 0, sizeof(config));
@@ -34,12 +40,7 @@ bool Ota::update(bool restart)
 
     esp_err_t ret = esp_https_ota(&ota_config);
     if (ret == ESP_OK)
-    {
-        if (restart)
-            esp_restart();
-
-        return true;
-    }
+        esp_restart();
 
     return false;
 }

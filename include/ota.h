@@ -12,8 +12,9 @@ class Ota
 public:
     Ota() = default;
     explicit Ota(std::string serverUri);
-    bool update(bool restart = true);
-    bool update(std::string from, bool restart = true);
+    bool update();
+    bool update(std::string from);
+    bool update(const char *from);
     inline void setServerUri(const std::string from) { m_serverUri = from; };
 
 private:
