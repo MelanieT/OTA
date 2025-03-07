@@ -6,6 +6,7 @@
 #define LIGHTSWITCH_OTA_H
 
 #include <string>
+#include "esp_http_client.h"
 
 class Ota
 {
