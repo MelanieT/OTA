@@ -8,10 +8,6 @@
 #include <utility>
 #include "ota.h"
 
-Ota::Ota()
-{
-}
-
 bool Ota::update()
 {
     esp_http_client_config_t config;

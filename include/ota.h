@@ -11,7 +11,7 @@
 class Ota
 {
 public:
-    Ota();
+    Ota() = default;
     bool update();
 
 private:
