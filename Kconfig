@@ -1,0 +1,6 @@
+menu "OTA Firmware OTA component"
+
+config OTA_SERVER_URI
+    string "Uri to download firmware from"
+
+endmenu

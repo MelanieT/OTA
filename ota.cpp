@@ -8,21 +8,8 @@
 #include <utility>
 #include "ota.h"
 
-Ota::Ota(std::string serverUri)
+Ota::Ota()
 {
-    m_serverUri = std::move(serverUri);
-}
-
-bool Ota::update(std::string from)
-{
-    m_serverUri = std::move(from);
-    update();
-}
-
-bool Ota::update(const char *from)
-{
-    m_serverUri = from;
-    update();
 }
 
 bool Ota::update()
@@ -30,7 +17,7 @@ bool Ota::update()
     esp_http_client_config_t config;
     memset(&config, 0, sizeof(config));
 
-    config.url = m_serverUri.c_str();
+    config.url = CONFIG_OTA_SERVER_URI;
     config.event_handler = http_event_handler;
 
     esp_https_ota_config_t ota_config;
